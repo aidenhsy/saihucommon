@@ -14,6 +14,10 @@ export function getTomorrowDate() {
   return dayjs().add(1, 'day').format('YYYY-MM-DD');
 }
 
+export function getCurrentChinaTime() {
+  return dayjs().tz('Asia/Shanghai').toDate();
+}
+
 export function convertUtcToChinaTime(utcTimeString: string): string {
   return dayjs.utc(utcTimeString).tz('Asia/Shanghai').format();
 }
