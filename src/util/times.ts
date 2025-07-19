@@ -7,11 +7,11 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export function getCurrentDate() {
-  return dayjs().format('YYYY-MM-DD');
+  return dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD');
 }
 
 export function getTomorrowDate() {
-  return dayjs().add(1, 'day').format('YYYY-MM-DD');
+  return dayjs().tz('Asia/Shanghai').add(1, 'day').format('YYYY-MM-DD');
 }
 
 export function getCurrentChinaTime() {
