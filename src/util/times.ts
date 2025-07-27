@@ -32,3 +32,20 @@ export function convertUtcToChinaTimeFormatted(
 ): string {
   return dayjs.utc(utcTimeString).tz('Asia/Shanghai').format(format);
 }
+
+export const getNextVersion = (): string => {
+  const currentUtcTime = dayjs().utc();
+  const cutoffTime = dayjs().utc().hour(3).minute(30).second(0);
+  const dateToUse = currentUtcTime.isAfter(cutoffTime)
+    ? currentUtcTime.add(1, 'day')
+    : currentUtcTime;
+  return dateToUse.format('YYYYMMDD');
+};
+export const getCurrentVersion = (): string => {
+  const currentUtcTime = dayjs().utc();
+  const cutoffTime = dayjs().utc().hour(3).minute(30).second(0);
+  const dateToUse = currentUtcTime.isAfter(cutoffTime)
+    ? currentUtcTime
+    : currentUtcTime.subtract(1, 'day');
+  return dateToUse.format('YYYYMMDD');
+};

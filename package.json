@@ -1,6 +1,6 @@
 {
   "name": "@saihu/common",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "description": "Common utilities for NestJS applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
