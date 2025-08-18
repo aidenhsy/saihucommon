@@ -7,11 +7,11 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export function getCurrentDate() {
-  return dayjs().format('YYYY-MM-DD');
+  return dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD');
 }
 
 export function getTomorrowDate() {
-  return dayjs().add(1, 'day').format('YYYY-MM-DD');
+  return dayjs().tz('Asia/Shanghai').add(1, 'day').format('YYYY-MM-DD');
 }
 
 export function getCurrentChinaTime() {
@@ -40,3 +40,20 @@ export function getMonthStart(month: string): Date {
 export function getMonthEnd(month: string): Date {
   return dayjs.utc(month).endOf('month').toDate();
 }
+
+export const getNextVersion = (): string => {
+  const currentUtcTime = dayjs().utc();
+  const cutoffTime = dayjs().utc().hour(3).minute(30).second(0);
+  const dateToUse = currentUtcTime.isAfter(cutoffTime)
+    ? currentUtcTime.add(1, 'day')
+    : currentUtcTime;
+  return dateToUse.format('YYYYMMDD');
+};
+export const getCurrentVersion = (): string => {
+  const currentUtcTime = dayjs().utc();
+  const cutoffTime = dayjs().utc().hour(3).minute(30).second(0);
+  const dateToUse = currentUtcTime.isAfter(cutoffTime)
+    ? currentUtcTime
+    : currentUtcTime.subtract(1, 'day');
+  return dateToUse.format('YYYYMMDD');
+};
