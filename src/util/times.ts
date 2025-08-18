@@ -32,3 +32,11 @@ export function convertUtcToChinaTimeFormatted(
 ): string {
   return dayjs.utc(utcTimeString).tz('Asia/Shanghai').format(format);
 }
+
+export function getMonthStart(month: string): Date {
+  return dayjs.utc(month).startOf('month').toDate();
+}
+
+export function getMonthEnd(month: string): Date {
+  return dayjs.utc(month).endOf('month').toDate();
+}
