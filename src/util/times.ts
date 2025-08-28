@@ -41,6 +41,13 @@ export function getMonthEnd(month: string): Date {
   return dayjs.utc(month).endOf('month').toDate();
 }
 
+export function getMonthStartDateString(month: string): string {
+  return dayjs.utc(month).startOf('month').format('YYYY-MM-DD');
+}
+export function getMonthEndDateString(month: string): string {
+  return dayjs.utc(month).endOf('month').format('YYYY-MM-DD');
+}
+
 export const getNextVersion = (): string => {
   const currentUtcTime = dayjs().utc();
   const cutoffTime = dayjs().utc().hour(3).minute(30).second(0);
