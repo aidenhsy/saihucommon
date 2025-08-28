@@ -34,11 +34,25 @@ export function convertUtcToChinaTimeFormatted(
 }
 
 export function getMonthStart(month: string): Date {
-  return dayjs.utc(month).startOf('month').toDate();
+  return dayjs
+    .utc(month)
+    .startOf('month')
+    .hour(0)
+    .minute(0)
+    .second(0)
+    .millisecond(0)
+    .toDate();
 }
 
 export function getMonthEnd(month: string): Date {
-  return dayjs.utc(month).endOf('month').toDate();
+  return dayjs
+    .utc(month)
+    .endOf('month')
+    .hour(23)
+    .minute(59)
+    .second(59)
+    .millisecond(999)
+    .toDate();
 }
 
 export function getMonthStartDateString(month: string): string {
