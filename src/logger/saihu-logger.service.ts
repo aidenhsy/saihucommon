@@ -18,9 +18,35 @@ export class SaihuLogger implements LoggerService {
     console.log(`[${context}]`, message);
   }
   error(message: any, trace?: string, context?: string) {
+    // Hide Nest internal errors
+    if (context?.includes('InstanceLoader')) return;
+    if (context?.includes('RoutesResolver')) return;
+    if (context?.includes('RouterExplorer')) return;
+    if (context?.includes('NestFactory')) return;
+    if (context?.includes('NestApplication')) return;
+    if (context?.includes('ClientProxy')) return;
+    if (context?.includes('NestMicroservice')) return;
+    if (context?.includes('AmqpConnection')) return;
+    if (context?.includes('MicroserviceConfiguration')) return;
+    if (context?.includes('RabbitMQModule')) return;
+    if (context?.includes('WebSocketsController')) return;
+
     console.error(`[${context}]`, message, trace);
   }
   warn(message: any, context?: string) {
+    // Hide Nest internal warnings
+    if (context?.includes('InstanceLoader')) return;
+    if (context?.includes('RoutesResolver')) return;
+    if (context?.includes('RouterExplorer')) return;
+    if (context?.includes('NestFactory')) return;
+    if (context?.includes('NestApplication')) return;
+    if (context?.includes('ClientProxy')) return;
+    if (context?.includes('NestMicroservice')) return;
+    if (context?.includes('AmqpConnection')) return;
+    if (context?.includes('MicroserviceConfiguration')) return;
+    if (context?.includes('RabbitMQModule')) return;
+    if (context?.includes('WebSocketsController')) return;
+
     console.warn(`[${context}]`, message);
   }
   debug() {}
