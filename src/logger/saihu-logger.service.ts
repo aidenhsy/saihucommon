@@ -10,6 +10,10 @@ export class SaihuLogger implements LoggerService {
     if (context?.includes('NestApplication')) return;
     if (context?.includes('ClientProxy')) return;
     if (context?.includes('NestMicroservice')) return;
+    if (context?.includes('AmqpConnection')) return;
+    if (context?.includes('MicroserviceConfiguration')) return;
+    if (context?.includes('RabbitMQModule')) return;
+    if (context?.includes('WebSocketsController')) return;
 
     console.log(`[${context}]`, message);
   }
