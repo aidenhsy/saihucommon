@@ -6,6 +6,14 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+export function getDayStart(date: string) {
+  return dayjs.utc(date).startOf('day').toDate();
+}
+
+export function getDayEnd(date: string) {
+  return dayjs.utc(date).endOf('day').toDate();
+}
+
 export function getCurrentDate() {
   return dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD');
 }
@@ -58,6 +66,7 @@ export function getMonthEnd(month: string): Date {
 export function getMonthStartDateString(month: string): string {
   return dayjs.utc(month).startOf('month').format('YYYY-MM-DD');
 }
+
 export function getMonthEndDateString(month: string): string {
   return dayjs.utc(month).endOf('month').format('YYYY-MM-DD');
 }
@@ -70,6 +79,7 @@ export const getNextVersion = (): string => {
     : currentUtcTime;
   return dateToUse.format('YYYYMMDD');
 };
+
 export const getCurrentVersion = (): string => {
   const currentUtcTime = dayjs().utc();
   const cutoffTime = dayjs().utc().hour(3).minute(30).second(0);
